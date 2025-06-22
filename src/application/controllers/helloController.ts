@@ -1,5 +1,5 @@
-import { Controller } from "@application/contracts/controller";
-import { Schema } from "@kernel/decorators/schema";
+import { Schema } from "../../kernel/decorators/schema";
+import { Controller } from "../contracts/controller";
 import { HelloBody, helloSchema } from "./schemas/helloSchema";
 
 @Schema(helloSchema)
