@@ -1,4 +1,4 @@
-import { ErrorCode } from "../../application/errors/errorCode";
+import { ErrorCode } from "@application/errors/errorCode";
 
 interface ILambdaErrorResponseparams {
   statusCode: number;

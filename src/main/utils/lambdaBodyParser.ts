@@ -1,5 +1,5 @@
+import { BadRequest } from "@application/errors/http/badRequest";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
-import { BadRequest } from "../../application/errors/http/badRequest";
 
 export function lambdaBodyParser(body: APIGatewayProxyEventV2["body"]) {
   try {
