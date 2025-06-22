@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { HelloController } from "../../application/controllers/helloController";
 import { lambdaHttpAdapter } from "../adapters/lambdaHttpAdapter";
 
