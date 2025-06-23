@@ -8,6 +8,12 @@ provider:
   region: sa-east-1
   runtime: nodejs22.x
   memorySize: 128
+  stage: ${opt:stage, 'dev'}
+  environment: ${file(./sls/config/env.yml)}
+
+custom:
+  cognito:
+    PoolName: ${self:service}-${self:provider.stage}-UserPool
 
 package:
   individually: true
@@ -17,9 +23,7 @@ build:
     configFile: ./esbuild.config.mjs
 
 functions:
-  hello:
-    handler: src/main/functions/hello.handler
-    events:
-      - httpApi:
-          path: /hello/{id}
-          method: POST
+  - ${file(./sls/functions/auth.yml)}
+
+resources:
+  - ${file(./sls/resources/userPool.yml)}
