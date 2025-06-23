@@ -10,6 +10,7 @@ provider:
   memorySize: 128
   stage: ${opt:stage, 'dev'}
   environment: ${file(./sls/config/env.yml)}
+  iam: ${file(./sls/config/role.yml)}
 
 custom:
   cognito:
@@ -27,3 +28,4 @@ functions:
 
 resources:
   - ${file(./sls/resources/userPool.yml)}
+  - ${file(./sls/resources/mainTable.yml)}
