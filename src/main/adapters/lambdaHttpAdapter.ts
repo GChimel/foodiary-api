@@ -26,6 +26,7 @@ export function lambdaHttpAdapter(controller: Controller<unknown>) {
         body: response.body ? JSON.stringify(response.body) : undefined,
       };
     } catch (error) {
+      console.log(error);
       if (error instanceof ZodError) {
         return lambdaErrorResponse({
           statusCode: 400,
