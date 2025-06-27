@@ -4,11 +4,15 @@ signUp:
     - httpApi:
         path: /auth/sign-up
         method: POST
-preSignUpTrigger:
-  handler: src/main/functions/auth/preSignUpTrigger.handler
+signIn:
+  handler: src/main/functions/auth/signIn.handler
   events:
-    - cognitoUserPool:
-        pool: ${self:custom.cognito.PoolName}
-        trigger: PreSignUp
-        forceDeploy: true
-        existing: true
+    - httpApi:
+        path: /auth/sign-in
+        method: POST
+
+# The trigger is configured manually to support event V2
+# See UserPool.um for the configuration
+#  Do not change this function name without change in UserPool.yml
+preTokenGenerationTrigger:
+  handler: src/main/functions/auth/preTokenGenerationTrigger.handler

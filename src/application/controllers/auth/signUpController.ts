@@ -22,7 +22,7 @@ export class SignUpController extends Controller<SignUpController.Reponse> {
     );
 
     return {
-      statusCode: 200,
+      statusCode: 201,
       body: {
         accessToken,
         refreshToken,
