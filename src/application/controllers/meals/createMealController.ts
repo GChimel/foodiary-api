@@ -2,14 +2,19 @@ import { Injectable } from "../../../kernel/decorators/injectable";
 import { Controller } from "../../contracts/controller";
 
 @Injectable()
-export class CreateMealController extends Controller<CreateMealController.Reponse> {
-  protected override async handle(): Promise<
+export class CreateMealController extends Controller<
+  "private",
+  CreateMealController.Reponse
+> {
+  protected override async handle({
+    accountId,
+  }: Controller.Request<"private">): Promise<
     Controller.Response<CreateMealController.Reponse>
   > {
     return {
       statusCode: 201,
       body: {
-        mealId: "2",
+        accountId,
       },
     };
   }
@@ -17,6 +22,6 @@ export class CreateMealController extends Controller<CreateMealController.Repons
 
 export namespace CreateMealController {
   export type Reponse = {
-    mealId: string;
+    accountId: string;
   };
 }
